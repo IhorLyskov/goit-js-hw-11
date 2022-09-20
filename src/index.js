@@ -6,13 +6,14 @@ import { renderPictures } from './js/markup';
 
 import Notiflix from 'notiflix';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import { gPage, gTotalHits } from './js/globals';
 
 const form = document.querySelector('.gallery__search-form');
 const galleryPictures = document.querySelector('.gallery__pictures');
 const loadMore = document.querySelector('.load-more');
 
 let gQuery;
+let gPage = 1;
+let gTotalHits = 0;
 
 async function searchPictures() {
   try {
