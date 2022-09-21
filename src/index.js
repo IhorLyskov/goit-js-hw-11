@@ -29,10 +29,11 @@ async function searchPictures() {
     const pictures = await getPictures(gQuery, gPage, PER_PAGE_MAX);
     if (pictures.totalHits) {
       if (gPage === 1) {
+        galleryPictures.innerHTML = '';
         gTotalHits = pictures.totalHits;
         Notiflix.Notify.info(`Hooray! We found ${gTotalHits} images.`);
       }
-      galleryPictures.innerHTML = renderPictures(pictures);
+      galleryPictures.insertAdjacentHTML('beforeend', renderPictures(pictures));
       gallery.refresh();
       gPage += 1;
       gTotalHits -= pictures.hits.length;
